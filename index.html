@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue JS Calculator</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="calculator">
+        <form>
+            <output-screen :output="output"></output-screen>
+            <div class="buttons">
+                <calculator-btn
+                    v-for="btn in buttonSet"
+                    :btn="btn"
+                    :key="btn.id"
+                    @click="addToCalculation"
+                ></calculator-btn>
+                <calculator-btn
+                    :btn="clear"
+                    @click="clearCalculation"
+                ></calculator-btn>
+                <calculator-btn
+                    :btn="equals"
+                    @click="calculate"
+                ></calculator-btn>
+            </div>
+        </form>
+        <error-msg v-if="keyInputAttempt" message="Sorry, no support for keyboard input">
+        </error-msg>
+    </div>
+    <script src="script/script.js"></script>
+</body>
+</html>
