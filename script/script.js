@@ -2,7 +2,7 @@ const Calculator = {
     data() {
         return {
             calculation: 0,
-            output: 0,
+            output: '0',
             buttonSet: [
                 {id: 'seven', text: 7},
                 {id: 'eight', text: 8},
@@ -43,24 +43,22 @@ const Calculator = {
                     value = event.target.value;
             }
 
-            if (this.output === 0) {
+            if (this.output === '0') {
                 this.output = '';
-                this.calculation = ';'
+                this.calculation = '';
             }
 
             this.output += event.target.value;
             this.calculation += value;
         },
         calculate() {
-            this.output = eval(this.calculation);
+            this.output = eval(this.calculation).toString();
         },
         clearCalculation() {
-            console.log('Clear');
             this.calculation = 0;
-            this.output = 0;
+            this.output = '0';
         },
         noKeyInput(event) {
-            console.log(event.which);
             this.keyInputAttempt = true;
         }
     }
